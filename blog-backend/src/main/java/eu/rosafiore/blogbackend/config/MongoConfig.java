@@ -22,7 +22,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     private String host;
 
     @Value("${spring.data.mongodb.port}")
-    private String port;
+    private int port;
 
     @Value("${spring.data.mongodb.database}")
     private String database;
@@ -47,7 +47,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         return MongoClientSettings.builder()
                 .credential(credential)
                 .applyToClusterSettings(builder ->
-                        builder.hosts(Arrays.asList(new ServerAddress(host, Integer.parseInt(port)))))
+                        builder.hosts(Arrays.asList(new ServerAddress(host, port))))
                 .build();
     }
 }
