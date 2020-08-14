@@ -1,5 +1,6 @@
 package eu.rosafiore.blogbackend.blogpost;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +15,7 @@ public class BlogPost {
     private String documentId;
     @Indexed(unique = true)
     private String endPoint;
+    @JsonFormat(pattern="dd-MM-yyyy HH:mm")
     private Date publishDate;
     private List<String> categories;
     private List<String> tags;
